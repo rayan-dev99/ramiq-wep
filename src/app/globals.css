@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-readex-pro), system-ui, sans-serif;
+  
+  --color-primary: #0E766D;
+  --color-primary-rgb: 14, 118, 109;
+  --color-primary-hover: #0a5b54;
+  --color-accent: #DDF5F1;
+  --color-accent-soft: #f0fbf9;
+  
+  --color-bg-sub: #F8FAFA;
+  --color-text-main: #1D2A29;
+  --color-text-sub: #5A6E6C;
+  --color-border-custom: #E6EDEC;
+  --color-border-focus: #B0DCD8;
+  
+  --shadow-sm-custom: 0 2px 8px -1px rgba(14, 118, 109, 0.03), 0 1px 3px -1px rgba(0, 0, 0, 0.02);
+  --shadow-md-custom: 0 8px 24px -4px rgba(14, 118, 109, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+  --shadow-lg-custom: 0 20px 40px -8px rgba(14, 118, 109, 0.08), 0 8px 20px -4px rgba(0, 0, 0, 0.03);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1d2a29;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Scroll Lock when modal is open */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Hide scrollbar for clean presentation if needed */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom fade animation defaults for Framer Motion keyframes helper */
+.transition-bezier {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
