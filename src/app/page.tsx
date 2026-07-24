@@ -23,7 +23,6 @@ export default function Home() {
 
   // Set or retrieve target countdown date on mount (8 days in future)
   useEffect(() => {
-    // Clear old 45-day storage to immediately apply the new 8-day countdown
     localStorage.removeItem("ramiq_launch_date");
     
     let target = localStorage.getItem("ramiq_launch_date_v2");
@@ -33,7 +32,10 @@ export default function Home() {
       target = future.toISOString();
       localStorage.setItem("ramiq_launch_date_v2", target);
     }
-    setCountdownTarget(new Date(target).getTime());
+    const targetTime = new Date(target).getTime();
+    queueMicrotask(() => {
+      setCountdownTarget(targetTime);
+    });
   }, []);
 
   return (

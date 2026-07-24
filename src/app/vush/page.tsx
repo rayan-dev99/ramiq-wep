@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Clock,
@@ -26,7 +26,6 @@ export default function VushPage() {
   const [countdownTarget, setCountdownTarget] = useState<number>(0);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Synchronize countdown target with main page
   useEffect(() => {
     localStorage.removeItem("ramiq_launch_date");
     let target = localStorage.getItem("ramiq_launch_date_v2");
@@ -36,7 +35,10 @@ export default function VushPage() {
       target = future.toISOString();
       localStorage.setItem("ramiq_launch_date_v2", target);
     }
-    setCountdownTarget(new Date(target).getTime());
+    const targetTime = new Date(target).getTime();
+    queueMicrotask(() => {
+      setCountdownTarget(targetTime);
+    });
   }, []);
 
   const handleDiscoverClick = () => {
@@ -218,15 +220,15 @@ export default function VushPage() {
         </section>
 
         {/* Collapsible content container */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="overflow-hidden"
-            >
+        <motion.div
+          initial={false}
+          animate={{
+            height: isExpanded ? "auto" : 0,
+            opacity: isExpanded ? 1 : 0,
+          }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="overflow-hidden"
+        >
               
               {/* THE STUDENT STORY */}
               <section id="vush-students" className="relative py-24 bg-bg-sub z-10 border-t border-border-custom">
@@ -522,8 +524,6 @@ export default function VushPage() {
               </section>
 
             </motion.div>
-          )}
-        </AnimatePresence>
 
       </main>
 
