@@ -38,8 +38,8 @@ export default function Contact() {
             </p>
             <div className="text-right">
               <p className="text-xs text-text-light font-medium">البريد الإلكتروني المباشر:</p>
-              <a href="mailto:info@ramiq.net" className="text-lg font-bold text-primary hover:text-primary-hover hover:underline inline-block mt-2">
-                info@ramiq.net
+              <a href="mailto:help@ramiq.net" className="text-lg font-bold text-primary hover:text-primary-hover hover:underline inline-block mt-2">
+                help@ramiq.net
               </a>
             </div>
           </div>

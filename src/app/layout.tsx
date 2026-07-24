@@ -56,7 +56,7 @@ const jsonLd = {
       "url": "https://ramiq.net",
       "logo": "https://ramiq.net/icon.svg",
       "description": "سوق تعليمي مبتكر يربط الطلاب بمعلمين موثوقين لحصص حضورية ومباشرة متميزة.",
-      "email": "info@ramiq.net"
+      "email": "help@ramiq.net"
     },
     {
       "@type": "WebSite",
