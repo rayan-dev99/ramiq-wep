@@ -28,12 +28,13 @@ export default function VushPage() {
 
   useEffect(() => {
     localStorage.removeItem("ramiq_launch_date");
-    let target = localStorage.getItem("ramiq_launch_date_v2");
+    localStorage.removeItem("ramiq_launch_date_v2");
+    let target = localStorage.getItem("ramiq_launch_date_v3");
     if (!target) {
       const now = new Date();
-      const future = new Date(now.getTime() + 8 * 24 * 60 * 60 * 1000);
+      const future = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000);
       target = future.toISOString();
-      localStorage.setItem("ramiq_launch_date_v2", target);
+      localStorage.setItem("ramiq_launch_date_v3", target);
     }
     const targetTime = new Date(target).getTime();
     queueMicrotask(() => {
